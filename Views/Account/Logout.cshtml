@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Logout";
+}
+
+<h2>Logout</h2>
+
+@{ 
+    Session.Clear();
+    Session.Abandon();
+    Response.Redirect("Login");
+}
+

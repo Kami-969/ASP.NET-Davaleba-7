@@ -1,0 +1,17 @@
+﻿@model IEnumerable<C.R.E.A.M.Models.Genre>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>Select From @Model.Count()</p>
+
+<ul>
+    @foreach (var g in Model)
+    {
+     <li>@Html.ActionLink(g.Name, "Browse", new { genre = g.Name })</li>
+    }
+</ul>
+

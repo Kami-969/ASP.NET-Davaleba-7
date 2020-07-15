@@ -1,0 +1,66 @@
+﻿@model C.R.E.A.M.Models.Album
+
+@{
+    ViewBag.Title = "Edit Album";
+    var genres = (SelectList)ViewBag.GenreId;
+    var artists = (SelectList)ViewBag.ArtistId;
+}
+
+<h2>EditAlbum</h2>
+
+@{
+    var errors = ViewBag.ErrorList as List<KeyValuePair<string, ModelState>>;
+}
+
+@using (Html.BeginForm("Edit", "StoreManage", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger"})
+        <div class="form-group">
+            @Html.Label("Artist", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ArtistId", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Genre", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("GenreId", null, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(Model=>Model.Price, new {@class= "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model=>Model.Price, new { htmlAttributes = new { @class =  "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Title, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model => Model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.AlbumUrl, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model => Model.AlbumUrl, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.ReleaseYear, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model => Model.ReleaseYear, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <input id="AlbumId" name="AlbumId" type="hidden" value="@Model.AlbumId" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@Html.ActionLink("Back to Index", "Index")
+

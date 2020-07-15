@@ -1,0 +1,31 @@
+﻿@model C.R.E.A.M.Models.Album
+
+@{
+    ViewBag.Title = "Detail" + Model.Title;
+}
+
+<h2>@Model.Title</h2>
+
+<p>
+    <img src="@Model.AlbumUrl" alt="@Model.AlbumUrl" width="400"/>
+</p>
+
+<div>
+    <p>
+        <em>Genre: </em> @Model.Genre.Name
+    </p>
+
+    <p>
+        <em>Price: </em> @Model.Price
+    </p>
+
+    <p>
+        <em>Release: </em> @Model.ReleaseYear
+    </p>
+
+    <p>
+        <em>Description: </em> @Model.Description
+    </p>
+
+
+</div>
